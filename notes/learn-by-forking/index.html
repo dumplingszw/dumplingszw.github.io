@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-tldeq5d5><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="dumplingszw" href="https://dumplingszw.github.io/rss.xml"><meta name="generator" content="Astro v7.1.3"><!-- 主题初始化：在首屏渲染前应用，避免闪烁 --><script>
+	(function () {
+		try {
+			var saved = localStorage.getItem('theme');
+			var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			var theme = saved || (dark ? 'dark' : 'light');
+			document.documentElement.setAttribute('data-theme', theme);
+		} catch (e) {
+			document.documentElement.setAttribute('data-theme', 'light');
+		}
+		window.toggleTheme = function () {
+			var cur = document.documentElement.getAttribute('data-theme');
+			var next = cur === 'dark' ? 'light' : 'dark';
+			document.documentElement.setAttribute('data-theme', next);
+			try {
+				localStorage.setItem('theme', next);
+			} catch (e) {}
+		};
+	})();
+</script><!-- Canonical URL --><link rel="canonical" href="https://dumplingszw.github.io/notes/learn-by-forking/"><!-- Primary Meta Tags --><title>用 Fork 的方式读开源项目</title><meta name="description" content="比起&quot;看文档&quot;，直接 fork 下来动手改，是理解一个项目最快的方式"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://dumplingszw.github.io/notes/learn-by-forking/"><meta property="og:title" content="用 Fork 的方式读开源项目"><meta property="og:description" content="比起&quot;看文档&quot;，直接 fork 下来动手改，是理解一个项目最快的方式"><meta property="og:image" content="https://dumplingszw.github.io/_astro/blog-placeholder-1.Bx0Zcyzv.jpg"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/_astro/Header.Cl9iitKt.css"><style>.hero-image[data-astro-cid-tldeq5d5]{margin:1rem 0 2rem}.hero-image[data-astro-cid-tldeq5d5] img[data-astro-cid-tldeq5d5]{border-radius:12px;margin:0 auto;display:block}.last-updated[data-astro-cid-tldeq5d5]{color:var(--muted);font-style:italic}
+</style></head><body data-astro-cid-tldeq5d5><header class="site-header" data-astro-cid-nen7h5rs><div class="container nav" data-astro-cid-nen7h5rs><h2 class="brand" data-astro-cid-nen7h5rs><a href="/" data-astro-cid-nen7h5rs>dumplingszw</a></h2><nav class="internal-links" data-astro-cid-nen7h5rs><a href="/" data-astro-cid-nen7h5rs="true" data-astro-cid-evkijfd6>Home</a><a href="/blog" data-astro-cid-nen7h5rs="true" data-astro-cid-evkijfd6>Blog</a><a href="/notes" class="active" data-astro-cid-nen7h5rs="true" data-astro-cid-evkijfd6>Notes</a><a href="/about" data-astro-cid-nen7h5rs="true" data-astro-cid-evkijfd6>About</a></nav><div class="right" data-astro-cid-nen7h5rs><a class="social" href="https://github.com/dumplingszw" target="_blank" aria-label="GitHub" title="GitHub" data-astro-cid-nen7h5rs><svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20" data-astro-cid-nen7h5rs><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-nen7h5rs></path></svg></a><button class="theme-toggle" aria-label="切换深浅色" title="切换深浅色" onclick="toggleTheme()" data-astro-cid-nen7h5rs><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" data-astro-cid-nen7h5rs><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-7.54-7.54C12.92 3.04 12.46 3 12 3Z" data-astro-cid-nen7h5rs></path></svg></button></div></div></header><main class="container" data-astro-cid-tldeq5d5><article data-astro-cid-tldeq5d5><div class="post-header" data-astro-cid-tldeq5d5><h1 data-astro-cid-tldeq5d5>用 Fork 的方式读开源项目</h1><p class="date" data-astro-cid-tldeq5d5><time datetime="2026-07-10T00:00:00.000Z">Jul 10, 2026</time></p></div><div class="post-content prose" data-astro-cid-tldeq5d5><h1 id="用-fork-的方式读开源项目">用 Fork 的方式读开源项目</h1>
+<p>想搞懂一个优秀的开源项目，光看 README 和文档效率很低。我更习惯 <strong>fork 下来，动手改</strong>。</p>
+<p>具体做法：</p>
+<ol>
+<li>fork 仓库，本地跑起来（先确保能 build、能 dev）</li>
+<li>挑一个你最感兴趣的功能，<strong>顺着调用链读代码</strong></li>
+<li>改一点东西（换个文案、加个日志、改个参数），看行为怎么变</li>
+<li>把“为什么这样设计”记成笔记</li>
+</ol>
+<p>这种“破坏性阅读”逼着你真正理解每一层，也比纯浏览记得牢。我 fork 过不少 Agent / AI 工具仓库，基本都是这个路子。</p>
+</div></article></main><footer class="page-foot"><div class="container">© 2026 dumplingszw ·<a href="https://github.com/dumplingszw" target="_blank">GitHub</a> ·<a href="mailto:1340898568@qq.com">Email</a></div></footer></body></html>
