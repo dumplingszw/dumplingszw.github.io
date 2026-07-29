@@ -1,0 +1,31 @@
+---
+import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
+import Layout from '../layouts/BlogPost.astro';
+---
+
+<Layout
+	title="关于我"
+	description="在校大学生，对 Agent 开发感兴趣"
+	pubDate={new Date('2026 July 26')}
+	heroImage={AboutHeroImage}
+>
+	<p>
+		你好，我是 <strong>dumplingszw</strong>，一名在校大学生。平时对 <strong>Agent（智能体）开发</strong> 很感兴趣，喜欢研究开源项目、自己动手写点小工具。
+	</p>
+
+	<p>
+		这个博客用来记录我在学习 Agent 开发、折腾开源项目过程中的笔记、踩坑和想法。内容不一定高深，但都是我自己实践过的东西。
+	</p>
+
+	<p>目前关注的方向：</p>
+	<ul>
+		<li>LLM Agent 的基础原理与工程实践</li>
+		<li>用 fork 的方式阅读、借鉴优秀的开源项目</li>
+		<li>把学到的东西用代码做出来</li>
+	</ul>
+
+	<p>
+		如果你对我的内容感兴趣，欢迎通过邮箱 <a href="mailto:1340898568@qq.com">1340898568@qq.com</a> 联系我，或者在
+		<a href="https://github.com/dumplingszw" target="_blank">GitHub</a> 上找到我。
+	</p>
+</Layout>
